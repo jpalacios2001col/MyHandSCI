@@ -53,6 +53,9 @@ add_message_files(
   FILES
   IMU_Quat.msg
   Motor_cmd.msg
+  Futek.msg
+  FlagStamped.msg
+  DataEntry.msg
 )
 
 ## Generate services in the 'srv' folder

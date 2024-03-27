@@ -1,0 +1,9 @@
+<launch>
+	<!--
+        Launch arduino for device control and force data collection (futek)
+    -->
+	<node ns="device_node" name="device_node" pkg="rosserial_python" 
+	type="serial_node.py" args ="_port:=/dev/ttyACM0 _baud:=57600" output= "screen" />  
+	<node ns="futek_node" name="futek_node" pkg="rosserial_python" 
+	type="serial_node.py" args ="_port:=/dev/ttyACM1 _baud:=19200" output= "screen" />  
+</launch>

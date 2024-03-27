@@ -1,0 +1,30 @@
+<launch>
+    <!--
+        Set the bag_file_name argument to specify the desired name of the rosbag file.
+        Example usage in the terminal:
+        roslaunch myhand_sci_firmware data_main.launch bag_file_name:=your_filename
+
+        Set the data_collection_directory argument to specify the directory where the bag file will be saved.
+        The default is "/home/joaquin/myhandsci_ws/src/MyHandSCI/data_collection/session_1/".
+    -->
+    <arg 
+        name="bag_file_name" 
+        default="data" 
+    />
+
+    <arg 
+        name="data_collection_directory" 
+        default="/home/joaquin/myhandsci_ws/src/MyHandSCI/data_collection/session_2/full_session/" 
+    />
+
+    <arg 
+        name="topics_to_record" 
+        default="/data_entry" 
+    />
+
+    <node pkg="rosbag" type="record" name="main_data_bag"
+          args="-o $(arg data_collection_directory)$(arg bag_file_name) $(arg topics_to_record)"
+          output="screen">
+        <param name="buffer_size" value="0"/>
+    </node>
+</launch>

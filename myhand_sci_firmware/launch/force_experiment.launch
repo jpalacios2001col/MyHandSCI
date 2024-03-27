@@ -1,0 +1,27 @@
+<launch>
+    <!--
+        Set the bag_file_name argument to specify the desired name of the rosbag file for the experiment.
+        Example usage in the terminal:
+        roslaunch myhand_sci_firmware force_experiment.launch bag_file_name:=experiment_1
+    -->
+    <arg 
+        name="bag_file_name" 
+        default="data" 
+    />
+
+    <arg 
+        name="experiment_directory" 
+        default="/home/joaquin/myhandsci_ws/src/MyHandSCI/data_collection/session_2/force_experiments/" 
+    />
+
+    <arg 
+        name="topics_to_record" 
+        default="/data_entry"
+    />
+
+    <node pkg="rosbag" type="record" name="experiment_bag"
+          args="-o $(arg experiment_directory)$(arg bag_file_name) $(arg topics_to_record)"
+          output="screen">
+        <param name="buffer_size" value="0"/>
+    </node>
+</launch>
